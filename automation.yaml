@@ -1,0 +1,23 @@
+alias: mise à jour de la progression de la vidéo youtube en pourcentage wled
+description: "Récupère la valeur de l'entrée numérique de pourcentage de visionnage de la vidéo youtube pour mettre à jour l'intensité de l'effet 'percent' de WLED"
+trigger:
+  - platform: state
+    entity_id:
+      - input_number.progression_video_youtube # remplacer par l'id de l'entité de l'entrée numérique
+condition: []
+action:
+  - service: light.turn_on 
+    data:
+      effect: percent
+      rgb_color:  # rouge par défaut (couleur de la barre de visionnage youtube)
+        - 255
+        - 0
+        - 0
+    target:
+      entity_id: light.wled #remplacer par l'id de l'entité du contrôleur WLED
+  - service: number.set_value
+    data_template:
+      value: "{{ states('input_number.progression_video_youtube')}}" # remplacer par l'id de l'entité de l'entrée numérique
+    target:
+      entity_id: number.wled_intensity #remplacer "wled" par l'id de l'entité du contrôleur WLED tout en laissant le "_intensity" à la fin
+mode: single
