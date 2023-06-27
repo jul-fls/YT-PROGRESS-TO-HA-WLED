@@ -1,4 +1,4 @@
-# yt-to-ha-wled
+# YT-PROGRESS-TO-HA-WLED
 
 Système permettant de synchroniser la progression de visionnage de vidéos et shorts youtube sur un controllerur wled via Home Assistant
 
